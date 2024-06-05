@@ -20,14 +20,14 @@ app.post("/", async (req, res) => {
   res.send(result);
 });
 
-app.put("/size", async (req, res) => {
-  // console.log(res.body);
+app.put("/:size", async (req, res) => {
+  
   let data = await dbConnect();
   let result = await data.updateOne( {size: req.params.size }, { $set: req.body });
   res.send(result);
 });
 
-app.delete("/size", async (req, res) => {
+app.delete("/:id", async (req, res) => {
   console.log(req.params.id);
   let data = await dbConnect();
   let result = await data.deleteOne({size: req.params.size});
